@@ -1,32 +1,46 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Ninja(),
   ));
 }
 
-class Ninja extends StatelessWidget {
+class Ninja extends StatefulWidget {
   const Ninja({super.key});
+
+  @override
+  State<Ninja> createState() => _NinjaState();
+}
+
+class _NinjaState extends State<Ninja> {
+  int ninjalevel = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Ninja ID Card",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Colors.grey[850],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {setState(() {
+          ninjalevel += 1;
+        });},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
+      ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: CircleAvatar(
                 backgroundImage: AssetImage("assets/Minions.jpg"),
                 radius: 50.0,
@@ -36,15 +50,15 @@ class Ninja extends StatelessWidget {
               height: 90.0,
               color: Colors.grey[800],
             ),
-            Text(
+            const Text(
               "NAME",
               style: TextStyle(
                   color: Colors.grey, fontSize: 20.0, letterSpacing: 2.0),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
-            Text(
+            const Text(
               "Getonto",
               style: TextStyle(
                   color: Colors.amber,
@@ -52,29 +66,29 @@ class Ninja extends StatelessWidget {
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
-            Text(
+            const Text(
               "CURRENT NINJA LEVEL",
               style: TextStyle(
                   color: Colors.grey, fontSize: 20.0, letterSpacing: 2.0),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             Text(
-              "8",
+              '$ninjalevel',
               style: TextStyle(
                   color: Colors.amber,
                   letterSpacing: 2.0,
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Row(children: [
-              Icon(Icons.mail, color: Colors.grey),
-              SizedBox(width: 10.0),
+              const Icon(Icons.mail, color: Colors.grey),
+              const SizedBox(width: 10.0),
               Text("example@gmail.com",
                   style: TextStyle(color: Colors.grey[400], fontSize: 20.0))
             ]),
